@@ -1,4 +1,10 @@
 *.pyc
-__pycache__
 *.csv
 /.ipynb_checkpoints
+*.log
+*.pot
+__pycache__/
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media

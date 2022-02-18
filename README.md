@@ -73,3 +73,5 @@ templates에 각자의 시각화 html 페이지 완성 후
     해당 a태그 href에 주소값 넣기
 4. ```python manage.py runserver``` 실행 후 정상 실행 되는 경우에만 push
 5. push 후 공유!
+
+---

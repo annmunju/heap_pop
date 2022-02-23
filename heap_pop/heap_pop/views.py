@@ -18,6 +18,9 @@ rc={"axes.unicode_minus":False}, style='darkgrid') # 성헌 끝
 def index(request):
     return render(request, 'index.html')
 
+def commute(request):
+    return render(request, 'commute.html')
+
 def seongheon(request):
     return render(request,'seongheon.html')
 

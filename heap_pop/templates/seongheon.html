@@ -4,29 +4,91 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+<script>
+
+    function subbus(){
+        var tp= document.getElementsByName("tp")[0].value;
+        var data = document.getElementsByName("data")[0].value;
+        switch(data){
+            case 'gw':
+                if(tp=='bus'){
+                    var newImage = document.createElement("img");
+                    var newHead = document.createElement("h2");
+                    newImage.setAttribute("src","/static/images/data4.png");
+                    newHead.innerHTML="버스 2019년 2020년 동월 대비 출근 인원 변화율(%)";
+                    document.getElementById('imageList').appendChild(newHead);
+                    document.getElementById('imageList').appendChild(newImage);
+
+                }else{
+                    var newImage = document.createElement("img");
+                    var newHead = document.createElement("h2");
+                    newImage.setAttribute("src","/static/images/data1.png");
+                    newHead.innerHTML="지하철 2019년 2020년 동월 대비 출근 인원 변화율(%)";
+                    document.getElementById('imageList').appendChild(newHead);
+                    document.getElementById('imageList').appendChild(newImage);
+                }
+            break;
+            case 'lw':
+                if(tp=='bus'){
+                    var newImage = document.createElement("img");
+                    var newHead = document.createElement("h2");
+                    newImage.setAttribute("src","/static/images/data5.png");
+                    newHead.innerHTML="버스 2019년 2020년 동월 대비 퇴근 인원 변화율(%)";
+                    document.getElementById('imageList').appendChild(newHead);
+                    document.getElementById('imageList').appendChild(newImage);
+                }else{
+                    var newImage = document.createElement("img");
+                    var newHead = document.createElement("h2");
+                    newImage.setAttribute("src","/static/images/data2.png");
+                    newHead.innerHTML="지하철 2019년 2020년 동월 대비 퇴근 인원 변화율(%)";
+                    document.getElementById('imageList').appendChild(newHead);
+                    document.getElementById('imageList').appendChild(newImage);
+                }
+            break;
+            case 'total':
+                if(tp=='bus'){
+                    var newImage = document.createElement("img");
+                    var newHead = document.createElement("h2");
+                    newImage.setAttribute("src","/static/images/data6.png");
+                    newHead.innerHTML="버스 2019년 2020년 동월 대비 총 이용객 수 변화율(%)";
+                    document.getElementById('imageList').appendChild(newHead);
+                    document.getElementById('imageList').appendChild(newImage);
+                }else{
+                    var newImage = document.createElement("img");
+                    var newHead = document.createElement("h2");
+                    newImage.setAttribute("src","/static/images/data3.png");
+                    newHead.innerHTML="지하철 2019년 2020년 동월 대비 총 이용객 수 변화율(%)";
+                    document.getElementById('imageList').appendChild(newHead);
+                    document.getElementById('imageList').appendChild(newImage);
+                }
+            break;
+            }
+        }
+
+</script>
 <body>
-    <h1>지하철 전년도 동월대비 이용객 변화율</h1>
-    <a href="#a">지하철</a>
-    <br>
-    <a href="#b">버스</a>
-    <div id="a">
-        <img src="/static/images/data1.png">
-    </div>
-    <div>
-        <img src="/static/images/data2.png">
-    </div>
-    <div>
-        <img src="/static/images/data3.png">
-    </div>
-    <h1>버스 전년도 동월대비 이용객 변화율</h1>
-    <div id ='b'>
-        <img src="/static/images/data4.png">
-    </div>
-    <div>
-        <img src="/static/images/data5.png">
-    </div>
-    <div>
-        <img src="/static/images/data6.png">
-    </div>
+    <h1>전년도 동월대비 이용객 변화율</h1>
+        <p>
+            대중교통
+            <select name="tp">
+                <option value="bus">버스</option>
+                <option value="subway">지하철</option>
+            </select>
+        </p>
+        <p>
+            이용객 변화율
+            <select name="data">
+                <option value="gw">출근</option>
+                <option value="lw">퇴근</option>
+                <option value="total">총 이용객</option>
+            </select>
+        </p>
+        <p>
+            <input type="button" value="선택" onclick="subbus()" >
+        </p>
+        <div id="imageList">
+
+        </div>
+
 </body>
 </html>

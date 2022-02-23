@@ -18,10 +18,9 @@ rc={"axes.unicode_minus":False}, style='darkgrid') # 성헌 끝
 def index(request):
     return render(request, 'index.html')
 
-<<<<<<< HEAD
 def commute(request):
     return render(request, 'commute.html')
-=======
+
 def seongheon(request):
     return render(request,'seongheon.html')
 
@@ -33,4 +32,3 @@ def covid_dif_map(request):
 
 def gyocheol(request):
     return render(request, 'gyocheol.html')
->>>>>>> c0c91e9028902f799543f807ecff88cf35c7087a

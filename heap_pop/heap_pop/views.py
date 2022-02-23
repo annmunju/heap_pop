@@ -20,3 +20,6 @@ def index(request):
 
 def seongheon(request):
     return render(request,'seongheon.html')
+
+def time_week_sub(request):
+    return render(request, 'time_week_sub.html')

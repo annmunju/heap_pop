@@ -23,5 +23,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index),
     path('seongheon/',views.seongheon,name='seongheon'),
+    path('time_week_sub/', views.time_week_sub),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

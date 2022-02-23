@@ -24,5 +24,8 @@ def seongheon(request):
 def time_week_sub(request):
     return render(request, 'time_week_sub.html')
 
+def covid_dif_map(request):
+    return render(request, 'covid_dif_map.html')
+
 def gyocheol(request):
     return render(request, 'gyocheol.html')

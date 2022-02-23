@@ -32,7 +32,7 @@
 
 : 각자 이름 옆에 [branch](https://backlog.com/git-tutorial/kr/stepup/stepup2_2.html) 만들고 이름 작성해주세요.
   
-* 강교철
+* 강교철 : gyocheol
 * 김순복 : sunbok
 * 권솔
 * 조성헌 : SeongHeon

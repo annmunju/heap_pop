@@ -16,9 +16,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from . import views
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index),
+<<<<<<< HEAD
     path('commute/', views.commute, name='commute')
+=======
+    path('seongheon/',views.seongheon,name='seongheon'),
+    path('time_week_sub/', views.time_week_sub),
+    path('covid_dif_map/', views.covid_dif_map),
+    path('gyocheol', views.gyocheol, name='gyocheol'),
+>>>>>>> c0c91e9028902f799543f807ecff88cf35c7087a
 ]
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -25,5 +25,6 @@ urlpatterns = [
     path('seongheon/',views.seongheon,name='seongheon'),
     path('time_week_sub/', views.time_week_sub),
     path('covid_dif_map/', views.covid_dif_map),
+    path('gyocheol', views.gyocheol, name='gyocheol'),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

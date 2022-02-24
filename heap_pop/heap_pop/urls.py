@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
 from . import views
 from django.conf.urls.static import static
 from django.conf import settings
@@ -27,5 +27,6 @@ urlpatterns = [
     path('time_week_sub/', views.time_week_sub),
     path('covid_dif_map/', views.covid_dif_map),
     path('gyocheol', views.gyocheol, name='gyocheol'),
+    path('sol/',views.sol),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

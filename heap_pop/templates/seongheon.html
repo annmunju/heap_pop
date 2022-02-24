@@ -5,10 +5,20 @@
     <title>Title</title>
 </head>
 <script>
-
     function subbus(){
-        var tp= document.getElementsByName("tp")[0].value;
-        var data = document.getElementsByName("data")[0].value;
+        clearDiv();
+        const queryTp = "input[name='tp']:checked";
+        const selectedTp = document.querySelectorAll(queryTp);
+        const queryData = "input[name='data']:checked";
+        const selectedData = document.querySelectorAll(queryData);
+        for(const i of selectedTp){
+            for(const j of selectedData){
+                selbox(i.value,j.value);
+            }
+        }
+    }
+    function selbox(tp,data){
+
         switch(data){
             case 'gw':
                 if(tp=='bus'){
@@ -18,7 +28,6 @@
                     newHead.innerHTML="버스 2019년 2020년 동월 대비 출근 인원 변화율(%)";
                     document.getElementById('imageList').appendChild(newHead);
                     document.getElementById('imageList').appendChild(newImage);
-
                 }else{
                     var newImage = document.createElement("img");
                     var newHead = document.createElement("h2");
@@ -62,29 +71,48 @@
                     document.getElementById('imageList').appendChild(newImage);
                 }
             break;
-            }
         }
+
+
+    }
+    function clearDiv(){
+        const imageNode = document.getElementById("imageList");
+        while (imageNode.lastElementChild){
+            imageNode.removeChild(imageNode.lastElementChild);
+        }
+
+    }
+    function clearchk(){
+        const clearTp = "input[name='tp']";
+        const allTp = document.querySelectorAll(clearTp);
+        const clearData= "input[name='data']";
+        const allData = document.querySelectorAll(clearData);
+        for(const i of allTp){
+            i.checked='';
+        }
+        for(const j of allData){
+            j.checked='';
+        }
+        clearDiv();
+    }
 
 </script>
 <body>
     <h1>전년도 동월대비 이용객 변화율</h1>
         <p>
             대중교통
-            <select name="tp">
-                <option value="bus">버스</option>
-                <option value="subway">지하철</option>
-            </select>
+            <input type="checkbox" name="tp" value="bus">버스
+            <input type="checkbox" name="tp" value="subway">지하철
         </p>
         <p>
             이용객 변화율
-            <select name="data">
-                <option value="gw">출근</option>
-                <option value="lw">퇴근</option>
-                <option value="total">총 이용객</option>
-            </select>
+            <input type="checkbox" name="data" value="gw">출근
+            <input type="checkbox" name="data" value="lw">퇴근
+            <input type="checkbox" name="data" value="total">총 이용객
         </p>
         <p>
             <input type="button" value="선택" onclick="subbus()" >
+            <input type="button" value="취소" onclick="clearchk()">
         </p>
         <div id="imageList">
 

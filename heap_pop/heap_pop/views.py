@@ -32,3 +32,6 @@ def covid_dif_map(request):
 
 def gyocheol(request):
     return render(request, 'gyocheol.html')
+
+def sol(request):
+    return render(request, 'sol.html')

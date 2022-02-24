@@ -5,12 +5,71 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+      *{
+          margin: 0;
+          padding:0;
+      }
+   
+      body {
+          font-family: plain,"Helvetica Neue",Helvetica,Arial,sans-serif;
+          font-weight: 400;
+          color: #000;
+          font-size: 17px;
+          margin: 20px;
+      }
+      
+      
+      button {
+          font-weight: 500;
+          white-space: nowrap;
+          cursor: pointer;
+          border-radius: 5px;
+          background-color: rgba(0,0,0,0);
+          text-transform: uppercase;
+      }
+     
+      .nav_ctg {
+          display: flex;
+          list-style: none;
+          margin: 0;
+          padding: 0;
+      }
+    
+      .nav_ctg li {
+          display: inline block;
+          margin-right: 24px;
+          margin-bottom: 2px;
+          line-height: 55px;
+      }
+    
+    </style>
+    <script>
+      function Toggle1(){
+        var busmap=document.getElementById("busmap")
+        busmap.toggle()
+      }
+
+    </script>
 </head>
 <body>
+  <h3>수도권 지도로 살펴본 출퇴근 시간 교통량 변화</h3>
+  <div class="header_div">
+    <ul class="nav_ctg">
+        <li><button id="btn1",onclick="Toggle1()">Bus HeatMap</button></li>
+        <li><button id="btn2",onclick="Toggle2()">Subway HeatMap</button></li>
+        <li><button id="btn3",onclick="Toggle3()">지하철 이용량으로 살펴본 오피스지역</button></li>
+        <li><button id="btn4",onclick="Toggle4()">코로나 전후 교통량 변화율</button></li>
+    </ul>
+  </div>
+
+  {% load static %}
+  <div>
+    <img id="busmap", src="{% static 'busheatmap.png' %}", href="">
+  </div>
 
 
 
-    
     
 </body>
 </html>

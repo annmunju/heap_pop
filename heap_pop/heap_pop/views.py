@@ -1,18 +1,18 @@
 from django.shortcuts import render, redirect
 
-import pandas as pd  #성헌 시작
-import numpy as np
-from matplotlib import pyplot as plt
-import seaborn as sns
-from datetime import datetime
-from django.shortcuts import render
-# 필요한 패키지와 라이브러리를 가져옴
-import matplotlib as mpl
-import matplotlib.font_manager as fm
-
-plt.rc("font", family = "Malgun Gothic")
-sns.set(font="Malgun Gothic",
-rc={"axes.unicode_minus":False}, style='darkgrid') # 성헌 끝
+# import pandas as pd  #성헌 시작
+# import numpy as np
+# from matplotlib import pyplot as plt
+# import seaborn as sns
+# from datetime import datetime
+# from django.shortcuts import render
+# # 필요한 패키지와 라이브러리를 가져옴
+# import matplotlib as mpl
+# import matplotlib.font_manager as fm
+#
+# plt.rc("font", family = "Malgun Gothic")
+# sns.set(font="Malgun Gothic",
+# rc={"axes.unicode_minus":False}, style='darkgrid') # 성헌 끝
 
 
 def index(request):

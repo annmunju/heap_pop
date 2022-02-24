@@ -21,42 +21,51 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+
     <style type="text/css">
 
-        *{ margin: 0px; padding: 20px; text-align: center;}
+        *{ margin: 0px; padding: 10px; text-align: center; }
 
-        #button{ margin-bottom: -70px; }
+        #button{ margin-bottom: -200px; }
 
-        #option1, #option2, #option3{ width: 200px; height: 50px; font-size: 23px; font-weight: bold;}
+        #button label{ width: 200px; height: 50px; font-size: 23px; font-weight: bold; }
 
+        .half_HL{ background: linear-gradient(to top, #FFBB00 50%, transparent 50%); background-size: 50px 100%; font-size: 30px; font-weight: bold; }
+
+        #text{ margin-bottom: -30px; }
+
+        #graph{ padding: 70px }
 
     </style>
 
-    <script type="text/javascript">
+
+     <script type="text/javascript">
         $(function() {
            $("label").on("click", function() {
             var btn = $(this)
 
-            if (btn.is("#option1")) {
+            if (btn.is("label:nth-child(1)")) {
                 $("#graph2").hide()
                 $("#graph3").hide()
                 $("#graph1").show()
             }
 
-            if (btn.is("#option2")) {
+            if (btn.is("label:nth-child(2)")) {
                 $("#graph1").hide()
                 $("#graph3").hide()
                 $("#graph2").show()
             }
 
-            if (btn.is("#option3")) {
+            if (btn.is("label:nth-child(3)")) {
                 $("#graph1").hide()
                 $("#graph2").hide()
                 $("#graph3").show()
             }
+
            })
         })
     </script>
+
 
 </head>
 
@@ -64,14 +73,18 @@
 
     <div id="all">
 
+        <div id="text">
+            <span class="half_HL"> 코로나19 전후 서울 시민들은 지하철과 버스를 얼마나 이용했을까 </span>
+        </div>
+
         <div id="button" class="btn-group btn-group-toggle" data-toggle="buttons">
-          <label id="option1" class="btn btn-secondary active">
+          <label for="option1" class="btn btn-secondary active">
             <input type="radio" name="options" id="option1" autocomplete="off" checked> 지하철
           </label>
-          <label id="option2" class="btn btn-secondary">
+          <label for="option2" class="btn btn-secondary">
             <input type="radio" name="options" id="option2" autocomplete="off"> 버스
           </label>
-          <label id="option3" class="btn btn-secondary">
+          <label for="option3" class="btn btn-secondary">
             <input type="radio" name="options" id="option3" autocomplete="off"> 지하철 & 버스
           </label>
         </div>
@@ -80,9 +93,9 @@
 
         {% load static %}
         <div id="graph">
-            <img id="graph1" src="{% static '지하철 월별 출퇴근자 추이.png' %}" alt="버스" width="1700" height="900">
-            <img id="graph2" style="display:none" src="{% static '버스 월별 출퇴근자 추이.png' %}" alt="버스" width="1700" height="900">
-            <img id="graph3" style="display:none" src="{% static '지하철&버스 월별 출퇴근자 추이.png' %}" alt="버스" width="1700" height="900">
+            <img id="graph1" src="{% static 'images/지하철 월별 출퇴근자 추이.png' %}" alt="지하철" width="1300" height="800">
+            <img id="graph2" style="display:none" src="{% static 'images/버스 월별 출퇴근자 추이.png' %}" alt="버스" width="1300" height="800">
+            <img id="graph3" style="display:none" src="{% static 'images/지하철&버스 월별 출퇴근자 추이.png' %}" alt="지하철&버스" width="1300" height="800">
         </div>
     </div>
 

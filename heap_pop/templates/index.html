@@ -11369,13 +11369,112 @@
                 <div class="container-fluid">
                     <h1 class="mt-4">프로젝트 : 코로나로 인해 재택근무가 많아지고 있는지 살펴보기</h1>
                     <p style="font-size:15pt">코로나 전후 출퇴근 교통 이용량, 사무실 공실률 등 다양한 지표를 통해 실제 재택근무 변화를 관찰하고자 한다.</p>
-<!--                    <p>-->
-<!--                        Make sure to keep all page content within the-->
-<!--                        <code>#page-content-wrapper</code>-->
-<!--                        . The top navbar is optional, and just for demonstration. Just create an element with the-->
-<!--                        <code>#sidebarToggle</code>-->
-<!--                        ID which will toggle the menu when clicked.-->
-<!--                    </p>-->
+                    <br>
+                    <h3>사용 데이터 목록</h2>
+                    <table class='table'>
+                      <colgroup>
+                          <col width='350px'">
+                          <col width='250px'>
+                          <col width='500px'>
+                          <col width='500px'>
+                      </colgroup>
+              
+                      <thead class="table-primary">
+                          <tr>
+                              <th>시각화 제목</th>
+                              <th>사용 데이터</th>
+                              <th>해당 데이터 사용 목적</th>
+                              <th>columns</th>
+                          </tr>
+                      
+                      <tfoot>
+                        <tr>
+                          <th></th>
+                          <th></th>
+                          <th></th>
+                          <th></th>
+                        </tr>
+                      </tfoot>
+                          
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td>코로나 이전과 이후의 시간대별-요일별 지하철 이용자 추이</td>
+                              <td><a href="https://drive.google.com/file/d/19y7TdtfRo7qPBJHmRxED75m3CKY1alI-/view?usp=sharing">18_21_요일_시간별_지하철_승객수.csv</a></td>
+                              <td>2018년~2021년 11월 까지의 지하철 승객의 시간대, 요일 정보를 가져오기 위해</td>
+                              <td>['날짜', '호선', '역번호', '역명', '~ 06', '06 ~ 07', '07 ~ 08', '08 ~ 09',
+                                '09 ~ 10', '10 ~ 11', '11 ~ 12', '12 ~ 13', '13 ~ 14', '14 ~ 15',
+                                '15 ~ 16', '16 ~ 17', '17 ~ 18', '18 ~ 19', '19 ~ 20', '20 ~ 21',
+                                '21 ~ 22', '22 ~ 23', '요일', '23 ~']</td>
+                          </tr>
+                          <tr>
+                              <td>대중교통 월별 출,퇴근시간 시각화</td>
+                              <td><a href="https://drive.google.com/file/d/12Oy9DLp7YOTZ0Q5KtCCPbV58VoTYvy0s/view?usp=sharing">버스 연도별 출퇴근.csv</a></td>
+                              <td>2018년~21년 출근 퇴근 시간대 버스 승객정보를 가져오기 위해</td>
+                              <td>['사용년월', '출근', '퇴근', '총버스이용객수']</td>
+                          </tr>
+                          <tr>
+                              <td>대중교통 전년도 동월대비 출퇴근 인원 변화율</td>
+                              <td><a href="https://drive.google.com/file/d/1wQYZ289eVUEN-uxMfOTPCxNO-_FWc40L/view?usp=sharing">지하철_시간대별_인원정보(위치정보_최종).csv</a></td>
+                              <td>2018~2021년 지하철 월별 출퇴근 시간 이용자 수 추이를 파악하기 위해</td>
+                              <td>['사용월', '호선명 지하철역', '07시-08시 하차인원', '08시-09시 하차인원', '09시-10시 하차인원','17시-18시 승차인원', '18시-19시 승차인원', '19시-20시 승차인원', 'lat', 'lng']</td>
+                          </tr>
+                          <tr>
+                              <td>대중교통 전년도 동월대비 출퇴근 인원 변화율</td>
+                              <td><a href="https://drive.google.com/file/d/1B7s4RaQMNVMHW1-Rtc_SM1uRScLKp24c/view?usp=sharing">버스_출퇴근_총_인원정보_2101수정완료.csv</a></td>
+                              <td>2018~2021년 버스 월별 출퇴근 시간 이용자 수 추이를 파악하기 위해</td>
+                              <td>['사용년월', '노선번호', '노선명', '표준버스정류장ID', '역명', '경도', '위도', '출근', '퇴근', '총 이동량']</td>
+                          </tr>
+                          <tr>
+                              <td>대중교통 전년도 동월대비 출퇴근 인원 변화율</td>
+                              <td><a href="https://drive.google.com/file/d/1FcLTLibJSm1PMo1IQ8F8ta63jW5GoH3z/view?usp=sharing">df_new.csv</a></td>
+                              <td>2018년~2021년 출근 퇴근 시간대 지하철 승객정보를 가져오기 위해</td>
+                              <td>['사용월', '호선명', '지하철역', '07시-08시 하차인원', '08시-09시 하차인원',
+                                '09시-10시 하차인원', '17시-18시 승차인원', '18시-19시 승차인원', '19시-20시 승차인원', 'lat',
+                                'lng', '출근 시간대 인원', '퇴근 시간대 인원']</td>
+                          </tr>
+                          <tr>
+                              <td>대중교통 코로나 전 후 총 이용량 비교</td>
+                              <td><a href="https://drive.google.com/file/d/1L-UwF8JhJ3zh4O1pecA6IPyR0SECXS94/view?usp=sharing">sub_2018.csv</a></td>
+                              <td>코로나 이전의 지하철 승객이 많은 지하철 역을 보기 위해 (상위 25% 선정)</td>
+                              <td>['사용월', '호선명', '지하철역', '07시-08시 하차인원', '08시-09시 하차인원',
+                                '09시-10시 하차인원', '17시-18시 승차인원', '18시-19시 승차인원', '19시-20시 승차인원']</td>
+                          </tr>
+                          <tr>
+                              <td>대중교통 코로나 전 후 총 이용량 비교</td>
+                              <td><a href="https://drive.google.com/file/d/1L-UwF8JhJ3zh4O1pecA6IPyR0SECXS94/view?usp=sharing">버스_출근퇴근_총_인원정보와_근처_지하철_2101수정완료.csv</a></td>
+                              <td>지하철 역 부근에 위치한 버스 정류장 정보를 가져오기 위해</td>
+                              <td>['사용년월', '노선번호', '노선명', '표준버스정류장ID', '역명', '경도', '위도', '출근', '퇴근',
+                                '총 이동량', 'line', 'name', 'lat', 'lng', 'distance']</td>
+                          </tr>
+                          <tr>
+                              <td>출퇴근 집중 지역 산출과 코로나 전 후 유입량 비교</td>
+                              <td><a href="https://drive.google.com/file/d/1vO-dd-sDkf8Qkzf80oBJ7gHkFE9Todtr/view?usp=sharing">2018_2021년버스</a></td>
+                              <td>2018년~2021년 출근 퇴근 시간대 버스 승객정보와 위치를 가져오기 위해</td>
+                              <td>['사용년월','표준버스정류장ID','역명','위도','경도','lat','lng','6시승차총승객수','7시승차총승객수','8시승차총승객수','9시승차총승객수','16시승차총승객수','17시승차총승객수','18시승차총승객수','19시승차총승객수',6시하차총승객수','7시하차총승객수','8시하차총승객수','9시하차총승객수','16시하차총승객수','17시하차총승객수','18시하차총승객수','19시하차총승객수']</td>
+                          </tr>
+                          <tr>
+                              <td>출퇴근 집중 지역 산출과 코로나 전 후 유입량 비교</td>
+                              <td><a href="https://drive.google.com/file/d/1HvlPxAuUjY0wZZ1RUFD5Rnw6hjUpclXf/view?usp=sharing">sub_18_21</a></td>
+                              <td>2018년~2021년 출근 퇴근 시간대 지하철 승객정보와 위치 가져오기 위해</td>
+                              <td>['사용월','호선명','지하철역','lat','lng','07시-08시 승차인원','08시-09시 승차인원','09시-10시 승차인원','17시-18시 승차인원','18시-19시 승차인원','19시-20시 승차인원','07시-08시 하차인원','08시-09시 하차인원','09시-10시 하차인원','17시-18시 하차인원','18시-19시 하차인원','19시-20시 하차인원']</td>
+                          </tr>
+                          <tr>
+                              <td>사무실 지역의 공실률 현황</td>
+                              <td><a href="https://drive.google.com/drive/folders/1UH17fcVs02mcVqBtcaikGyP3I6vQSNQ7">18_공실률.xls, 19_공실률.xls, 20_공실률.xls, 21_공실률.xls</a></td>
+                              <td>해당 년도의 서울 지역의 공실률을 파악하고 바 그래프를 시각화 위해 전처리 하기 위해</td>
+                              <td>['기간', '광역상권', '하위상권', '임대료', '공실률', '수익률 정보', '수익률 정보.1', '수익률 정보.2']</td>
+                          </tr>
+                          <tr>
+                              <td>사무실 지역의 공실률 현황</td>
+                              <td><a href="https://drive.google.com/file/d/1v3e-RF0hDcOoN05CnFD_UT8qc06OplLD/view?usp=sharing">2018~2021 공실률 평균.csv</a></td>
+                              <td>코로나 전 후 공실률 바 그래프를 시각화 하기 위해</td>
+                              <td>['Unnamed: 0', '하위상권', '공실률_x_x', '공실률_y_x', '평균_x', '공실률_x_y',
+                                       '공실률_y_y', '평균_y']</td>
+                          </tr>
+                      </tbody>
+                    </table>
+
                 </div>
             </div>
         </div>

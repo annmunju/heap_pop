@@ -11337,7 +11337,7 @@
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{% url 'commute' %}">대중교통 월별 출,퇴근시간 시각화 : 김순복</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/seongheon">대중교통 전년도 동월 대비 출퇴근 인원 변화율 : 조성헌</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/covid_dif_map">대중교통 코로나 전 후 총 이용량 지도 시각화 : 안문주</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">대중교통 이용객 시간별 변화 지도 : 권솔</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/sol">대중교통 이용객 시간별 변화 지도 : 권솔</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/gyocheol">사무실 지역의 공실률 현황 : 강교철</a>
                 </div>
             </div>
@@ -11446,6 +11446,18 @@
                               <td>지하철 역 부근에 위치한 버스 정류장 정보를 가져오기 위해</td>
                               <td>['사용년월', '노선번호', '노선명', '표준버스정류장ID', '역명', '경도', '위도', '출근', '퇴근',
                                 '총 이동량', 'line', 'name', 'lat', 'lng', 'distance']</td>
+                          </tr>
+                          <tr>
+                              <td>출퇴근 집중 지역 산출과 코로나 전 후 유입량 비교</td>
+                              <td><a href="https://drive.google.com/file/d/1vO-dd-sDkf8Qkzf80oBJ7gHkFE9Todtr/view?usp=sharing">2018_2021년버스</a></td>
+                              <td>2018년~2021년 출근 퇴근 시간대 버스 승객정보와 위치를 가져오기 위해</td>
+                              <td>['사용년월','표준버스정류장ID','역명','위도','경도','lat','lng','6시승차총승객수','7시승차총승객수','8시승차총승객수','9시승차총승객수','16시승차총승객수','17시승차총승객수','18시승차총승객수','19시승차총승객수',6시하차총승객수','7시하차총승객수','8시하차총승객수','9시하차총승객수','16시하차총승객수','17시하차총승객수','18시하차총승객수','19시하차총승객수']</td>
+                          </tr>
+                          <tr>
+                              <td>출퇴근 집중 지역 산출과 코로나 전 후 유입량 비교</td>
+                              <td><a href="https://drive.google.com/file/d/1HvlPxAuUjY0wZZ1RUFD5Rnw6hjUpclXf/view?usp=sharing">sub_18_21</a></td>
+                              <td>2018년~2021년 출근 퇴근 시간대 지하철 승객정보와 위치 가져오기 위해</td>
+                              <td>['사용월','호선명','지하철역','lat','lng','07시-08시 승차인원','08시-09시 승차인원','09시-10시 승차인원','17시-18시 승차인원','18시-19시 승차인원','19시-20시 승차인원','07시-08시 하차인원','08시-09시 하차인원','09시-10시 하차인원','17시-18시 하차인원','18시-19시 하차인원','19시-20시 하차인원']</td>
                           </tr>
                           <tr>
                               <td>사무실 지역의 공실률 현황</td>

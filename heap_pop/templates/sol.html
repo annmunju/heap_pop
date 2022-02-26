@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>어 느새 부터 heap.pop() 안멋조</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'mainstyle.css' %}">
     <style>
       *{
           margin: 0;
@@ -20,57 +22,414 @@
           margin: 20px;
       }
 
+      input[type="radio"] {display: none;}
+      input[type="radio"] + label {display: inline-block;margin:2px 0px;padding: 5px 30px;background-color: #ccc;color: black;cursor: pointer;
+          text-transform: uppercase;}
+      input[type="radio"]:checked + label {background: #aaa;color: #000;}
 
-      button {
-          font-weight: 500;
-          cursor: pointer;
-          border-radius: 5px;
-          background-color: rgba(0,0,0,0);
-          text-transform: uppercase;
-          height: 25px
-      }
-      a {
-        margin: 5px;
-      }
+      .box {width: 100%;height: 600px;margin: 0 auto;display: none;}
+      .map {width: 100%;height: 800px;margin: 30px 0px auto; auto;display: none;}
+      .index {width: 100%;height: 800px;margin: 30px 0px auto;display: none;}
 
-      .nav_ctg {
-          display: flex;
-          list-style: none;
-          margin: 0;
-          padding: 0;
+      img {
+        width:85%;
+        margin-right: 10px;
+        margin-top: 30px;
       }
 
-      .nav_ctg li {
-          display: inline block;
-          margin-right: 24px;
-          margin-bottom: 2px;
-          line-height: 55px;
-      }
+      input[id="btn1"]:checked ~ .tab1 {display: block;}
+      input[id="btn2"]:checked ~ .tab2 {display: block;}
+      input[id="btn3"]:checked ~ .tab3 {display: block;}
+      input[id="btn4"]:checked ~ .tab4 {display: block;}
+
+      input[id="btn_bus1"]:checked ~ .bus1 {display: block;}
+      input[id="btn_bus2"]:checked ~ .bus2 {display: block;}
+
+      input[id="btn_busin1"]:checked ~ .busin1 {display: block;}
+      input[id="btn_busin2"]:checked ~ .busin2 {display: block;}
+      input[id="btn_busin3"]:checked ~ .busin3 {display: block;}
+      input[id="btn_busin4"]:checked ~ .busin4 {display: block;}
+      input[id="btn_busin5"]:checked ~ .busin5 {display: block;}
+      input[id="btn_busin6"]:checked ~ .busin6 {display: block;}
+      input[id="btn_busin7"]:checked ~ .busin7 {display: block;}
+      input[id="btn_busin8"]:checked ~ .busin8 {display: block;}
+
+      input[id="btn_busout1"]:checked ~ .busout1 {display: block;}
+      input[id="btn_busout2"]:checked ~ .busout2 {display: block;}
+      input[id="btn_busout3"]:checked ~ .busout3 {display: block;}
+      input[id="btn_busout4"]:checked ~ .busout4 {display: block;}
+      input[id="btn_busout5"]:checked ~ .busout5 {display: block;}
+      input[id="btn_busout6"]:checked ~ .busout6 {display: block;}
+      input[id="btn_busout7"]:checked ~ .busout7 {display: block;}
+      input[id="btn_busout8"]:checked ~ .busout8 {display: block;}
+
+
+      input[id="btn_sub1"]:checked ~ .sub1 {display: block;}
+      input[id="btn_sub2"]:checked ~ .sub2 {display: block;}
+
+      input[id="btn_subin1"]:checked ~ .subin1 {display: block;}
+      input[id="btn_subin2"]:checked ~ .subin2 {display: block;}
+      input[id="btn_subin3"]:checked ~ .subin3 {display: block;}
+      input[id="btn_subin4"]:checked ~ .subin4 {display: block;}
+      input[id="btn_subin5"]:checked ~ .subin5 {display: block;}
+      input[id="btn_subin6"]:checked ~ .subin6 {display: block;}
+      input[id="btn_subin7"]:checked ~ .subin7 {display: block;}
+      input[id="btn_subin8"]:checked ~ .subin8 {display: block;}
+
+      input[id="btn_subout1"]:checked ~ .subout1 {display: block;}
+      input[id="btn_subout2"]:checked ~ .subout2 {display: block;}
+      input[id="btn_subout3"]:checked ~ .subout3 {display: block;}
+      input[id="btn_subout4"]:checked ~ .subout4 {display: block;}
+      input[id="btn_subout5"]:checked ~ .subout5 {display: block;}
+      input[id="btn_subout6"]:checked ~ .subout6 {display: block;}
+      input[id="btn_subout7"]:checked ~ .subout7 {display: block;}
+      input[id="btn_subout8"]:checked ~ .subout8 {display: block;}
+
+      input[id="btn_pop1"]:checked ~ .pop1 {display: block;}
+      input[id="btn_pop2"]:checked ~ .pop2 {display: block;}
 
 
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
     <script>
+        /*!
+        * Start Bootstrap - Simple Sidebar v6.0.3 (https://startbootstrap.com/template/simple-sidebar)
+        * Copyright 2013-2021 Start Bootstrap
+        * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-simple-sidebar/blob/master/LICENSE)
+        */
+        //
+        // Scripts
+        //
 
-      $("#btn1").click(function(){
-        $("#busmap").toggle();
-      })
+        window.addEventListener('DOMContentLoaded', event => {
 
+            // Toggle the side navigation
+            const sidebarToggle = document.body.querySelector('#sidebarToggle');
+            if (sidebarToggle) {
+                //Uncomment Below to persist sidebar toggle between refreshes
+                if (localStorage.getItem('sb|sidebar-toggle') === 'false') {
+                    document.body.classList.toggle('sb-sidenav-toggled');
+                }
+                sidebarToggle.addEventListener('click', event => {
+                    event.preventDefault();
+                    document.body.classList.toggle('sb-sidenav-toggled');
+                    localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sb-sidenav-toggled'));
+                });
+            }
+
+        });
+
+    </script>
+    <script type="text/javascript">
+        function selectImg(){
+            var chks = document.getElementsByName("chk");
+            var imgs = document.getElementsByTagName("img")
+            console.log(imgs, chks)
+            for (var i = 0; i < chks.length; i++){
+                if (chks[i].checked){
+                    imgs[i].style.display = 'inline'
+                } else {
+                    imgs[i].style.display = 'none'
+                }
+            }
+        }
+
+        function clearDiv(){
+            var chks = document.getElementsByName("chk")
+            var imgs = document.getElementsByTagName("img")
+            for (var i = 0; i < chks.length; i++){
+            imgs[i].style.display = 'none'
+            }
+            for (var i = 0; i < chks.length; i++){
+            chks[i].checked = ''
+            }
+        }
     </script>
 </head>
 <body>
-  <h3>수도권 지도로 살펴본 출퇴근 시간 교통량 변화</h3>
-  <div class="header_div">
-    <ul class="nav_ctg">
-        <li><button id="btn1" ><a>Bus HeatMap</a></button></li>
-        <li><button id="btn2" ><a>Subway HeatMap</a></button></li>
-        <li><button id="btn3" ><a>지하철 이용량으로 살펴본 오피스지역</a></button></li>
-        <li><button id="btn4"><a>코로나 전후 교통량 변화율</a></button></li>
-    </ul>
-  </div>
-  {% load static %}
-  <div id="busmap">
-    <img src="{% static 'images/busheatmap.png' %}" alt="image">
-  </div>
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar-->
+        <div class="border-end bg-white" id="sidebar-wrapper">
+            <div class="sidebar-heading border-bottom bg-light">heap.pop()조 시각화 목록</div>
+            <div class="list-group list-group-flush">
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="../">처음으로 돌아가기</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/time_week_sub">코로나 이전과 이후의 시간대별-요일별 지하철 이용자 추이 : 안문주</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{% url 'commute' %}">대중교통 월별 출,퇴근시간 시각화 : 김순복</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/seongheon">대중교통 전년도 동월 대비 출퇴근 인원 변화율 : 조성헌</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/covid_dif_map">대중교통 코로나 전 후 총 이용량 지도 시각화 : 안문주</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/sol">대중교통 이용객 시간별 변화 지도 : 권솔</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/gyocheol">사무실 지역의 공실률 현황 : 강교철</a>
+            </div>
+        </div>
+        <!-- Page content wrapper-->
+        <div id="page-content-wrapper">
+            <!-- Top navigation-->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                <div class="container-fluid">
+                    <button class="btn btn-primary" id="sidebarToggle">Index Switch</button>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+<!--                                <li class="nav-item active"><a class="nav-link" href="#">Notion</a></li>-->
+<!--                                <li class="nav-item"><a class="nav-link" href="#">Drive</a></li>-->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">개요 정리 사이트</a>
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="https://mungdo.notion.site/2d12e7c6bb2c47ab8dacca63b505dcbf">Notion</a>
+                                    <a class="dropdown-item" href="https://drive.google.com/drive/folders/1JsNSLGX_gmDqjd5FV3Qfu7fk6KF_z3qO">Drive</a>
+<!--                                        <div class="dropdown-divider"></div>-->
+<!--                                        <a class="dropdown-item" href="#!">Something else here</a>-->
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- Page content-->
+            <div class="container-fluid">
+              <h3>수도권 지도로 살펴본 출퇴근 시간 교통량 변화</h3>
+              <br>
+
+              <div class="nav_ctg">
+                  <input type="radio" id="btn1" name="tab">
+                  <label for="btn1">Bus HeatMap</label>
+                  <input type="radio" id="btn2" name="tab">
+                  <label for="btn2">Subway HeatMap</label>
+                  <input type="radio" id="btn3" name="tab">
+                  <label for="btn3">출퇴근 시간 유입 인구</label>
+                  <input type="radio" id="btn4" name="tab">
+                  <label for="btn4">코로나 이후 유입 인구 변화율</label>
+
+                  <div class="box tab1">
+                      <input type="radio" id="btn_bus1" name="bus">
+                      <label for="btn_bus1">Bus In</label>
+                      <input type="radio" id="btn_bus2" name="bus">
+                      <label for="btn_bus2">Bus Out</label>
+
+                      <div class="map bus1">
+                          <input type="radio" id="btn_busin1" name="busin">
+                          <label for="btn_busin1">2018 8-9</label>
+                          <input type="radio" id="btn_busin2" name="busin">
+                          <label for="btn_busin2">2018 18-19</label>
+                          <input type="radio" id="btn_busin3" name="busin">
+                          <label for="btn_busin3">2019 8-9</label>
+                          <input type="radio" id="btn_busin4" name="busin">
+                          <label for="btn_busin4">2019 18-19</label>
+                          <input type="radio" id="btn_busin5" name="busin">
+                          <label for="btn_busin5">2020 8-9</label>
+                          <input type="radio" id="btn_busin6" name="busin">
+                          <label for="btn_busin6">2020 18-19</label>
+                          <input type="radio" id="btn_busin7" name="busin">
+                          <label for="btn_busin7">2021 8-9</label>
+                          <input type="radio" id="btn_busin8" name="busin">
+                          <label for="btn_busin8">2021 18-19</label>
+
+
+                          <div class="index busin1" >
+                              <iframe name="myframe" src="{% static 'images/sol/bus2018_in_8_map.html' %}" width="80%" height="800px"></iframe>
+                          </div>
+                          <div class="index busin2" >
+                              <iframe name="myframe" src="{% static 'images/sol/bus2018_in_18_map.html' %}" width="80%" height="800px"></iframe>
+                          </div>
+                          <div class="index busin3" >
+                              <iframe name="myframe" src="{% static 'images/sol/bus2019_in_8_map.html' %}" width="80%" height="800px"></iframe>
+                          </div>
+                          <div class="index busin4" >
+                              <iframe name="myframe" src="{% static 'images/sol/bus2019_in_18_map.html' %}" width="80%" height="800px"></iframe>
+                          </div>
+                          <div class="index busin5" >
+                              <iframe name="myframe" src="{% static 'images/sol/bus2020_in_8_map.html' %}" width="80%" height="800px"></iframe>
+                          </div>
+                          <div class="index busin6" >
+                              <iframe name="myframe" src="{% static 'images/sol/bus2020_in_18_map.html' %}" width="80%" height="800px"></iframe>
+                          </div>
+                          <div class="index busin7" >
+                              <iframe name="myframe" src="{% static 'images/sol/bus2021_in_8_map.html' %}" width="80%" height="800px"></iframe>
+                          </div>
+                          <div class="index busin8" >
+                              <iframe name="myframe" src="{% static 'images/sol/bus2021_in_18_map.html' %}" width="80%" height="800px"></iframe>
+                          </div>
+
+                          <img src="{% static 'images/sol/busheatmap.png' %}" alt="image">
+                      </div>
+
+                      <div class="map bus2">
+                          <input type="radio" id="btn_busout1" name="busout">
+                          <label for="btn_busout1">2018 8-9</label>
+                          <input type="radio" id="btn_busout2" name="busout">
+                          <label for="btn_busout2">2018 18-19</label>
+                          <input type="radio" id="btn_busout3" name="busout">
+                          <label for="btn_busout3">2019 8-9</label>
+                          <input type="radio" id="btn_busout4" name="busout">
+                          <label for="btn_busout4">2019 18-19</label>
+                          <input type="radio" id="btn_busout5" name="busout">
+                          <label for="btn_busout5">2020 8-9</label>
+                          <input type="radio" id="btn_busout6" name="busout">
+                          <label for="btn_busout6">2020 18-19</label>
+                          <input type="radio" id="btn_busout7" name="busout">
+                          <label for="btn_busout7">2021 8-9</label>
+                          <input type="radio" id="btn_busout8" name="busout">
+                          <label for="btn_busout8">2021 18-19</label>
+
+
+                          <div class="index busout1" >
+                              <iframe name="myframe" src="{% static 'images/sol/bus2018_out_8_map.html' %}" width="80%" height="800px"></iframe>
+                          </div>
+                          <div class="index busout2" >
+                              <iframe name="myframe" src="{% static 'images/sol/bus2018_out_18_map.html' %}" width="80%" height="800px"></iframe>
+                          </div>
+                          <div class="index busout3" >
+                              <iframe name="myframe" src="{% static 'images/sol/bus2019_out_8_map.html' %}" width="80%" height="800px"></iframe>
+                          </div>
+                          <div class="index busout4" >
+                              <iframe name="myframe" src="{% static 'images/sol/bus2019_out_18_map.html' %}" width="80%" height="800px"></iframe>
+                          </div>
+                          <div class="index busout5" >
+                              <iframe name="myframe" src="{% static 'images/sol/bus2020_out_8_map.html' %}" width="80%" height="800px"></iframe>
+                          </div>
+                          <div class="index busout6" >
+                              <iframe name="myframe" src="{% static 'images/sol/bus2020_out_18_map.html' %}" width="80%" height="800px"></iframe>
+                          </div>
+                          <div class="index busout7" >
+                              <iframe name="myframe" src="{% static 'images/sol/bus2021_out_8_map.html' %}" width="80%" height="800px"></iframe>
+                          </div>
+                          <div class="index busout8" >
+                              <iframe name="myframe" src="{% static 'images/sol/bus2021_out_18_map.html' %}" width="80%" height="800px"></iframe>
+                          </div>
+
+                          <img src="{% static 'images/sol/busheatmap2.png' %}" alt="image">
+                      </div>
+                  </div>
+
+                  <div class="box tab2">
+                      <input type="radio" id="btn_sub1" name="sub">
+                      <label for="btn_sub1">Subway In</label>
+                      <input type="radio" id="btn_sub2" name="sub">
+                      <label for="btn_sub2">Subway Out</label>
+
+                      <div class="map sub1">
+                          <input type="radio" id="btn_subin1" name="subin">
+                          <label for="btn_subin1">2018 8-9</label>
+                          <input type="radio" id="btn_subin2" name="subin">
+                          <label for="btn_subin2">2018 18-19</label>
+                          <input type="radio" id="btn_subin3" name="subin">
+                          <label for="btn_subin3">2019 8-9</label>
+                          <input type="radio" id="btn_subin4" name="subin">
+                          <label for="btn_subin4">2019 18-19</label>
+                          <input type="radio" id="btn_subin5" name="subin">
+                          <label for="btn_subin5">2020 8-9</label>
+                          <input type="radio" id="btn_subin6" name="subin">
+                          <label for="btn_subin6">2020 18-19</label>
+                          <input type="radio" id="btn_subin7" name="subin">
+                          <label for="btn_subin7">2021 8-9</label>
+                          <input type="radio" id="btn_subin8" name="subin">
+                          <label for="btn_subin8">2021 18-19</label>
+
+
+                          <div class="index subin1" >
+                              <iframe name="myframe" src="{% static 'images/sol/sub2018_in_8_map.html' %}" width="80%" height="800px"></iframe>
+                          </div>
+                          <div class="index subin2" >
+                              <iframe name="myframe" src="{% static 'images/sol/sub2018_in_18_map.html' %}" width="80%" height="800px"></iframe>
+                          </div>
+                          <div class="index subin3" >
+                              <iframe name="myframe" src="{% static 'images/sol/sub2019_in_8_map.html' %}" width="80%" height="800px"></iframe>
+                          </div>
+                          <div class="index subin4" >
+                              <iframe name="myframe" src="{% static 'images/sol/sub2019_in_18_map.html' %}" width="80%" height="800px"></iframe>
+                          </div>
+                          <div class="index subin5" >
+                              <iframe name="myframe" src="{% static 'images/sol/sub2020_in_8_map.html' %}" width="80%" height="800px"></iframe>
+                          </div>
+                          <div class="index subin6" >
+                              <iframe name="myframe" src="{% static 'images/sol/sub2020_in_18_map.html' %}" width="80%" height="800px"></iframe>
+                          </div>
+                          <div class="index subin7" >
+                              <iframe name="myframe" src="{% static 'images/sol/sub2021_in_8_map.html' %}" width="80%" height="800px"></iframe>
+                          </div>
+                          <div class="index subin8" >
+                              <iframe name="myframe" src="{% static 'images/sol/sub2021_in_18_map.html' %}" width="80%" height="800px"></iframe>
+                          </div>
+
+                          <img src="{% static 'images/sol/subheatmap1.png' %}" alt="image">
+                      </div>
+                      <div class="map sub2">
+                            <input type="radio" id="btn_subout1" name="subout">
+                            <label for="btn_subout1">2018 8-9</label>
+                            <input type="radio" id="btn_subout2" name="subout">
+                            <label for="btn_subout2">2018 18-19</label>
+                            <input type="radio" id="btn_subout3" name="subout">
+                            <label for="btn_subout3">2019 8-9</label>
+                            <input type="radio" id="btn_subout4" name="subout">
+                            <label for="btn_subout4">2019 18-19</label>
+                            <input type="radio" id="btn_subout5" name="subout">
+                            <label for="btn_subout5">2020 8-9</label>
+                            <input type="radio" id="btn_subout6" name="subout">
+                            <label for="btn_subout6">2020 18-19</label>
+                            <input type="radio" id="btn_subout7" name="subout">
+                            <label for="btn_subout7">2021 8-9</label>
+                            <input type="radio" id="btn_subout8" name="subout">
+                            <label for="btn_subout8">2021 18-19</label>
+
+
+                            <div class="index subout1" >
+                                <iframe name="myframe" src="{% static 'images/sol/sub2018_out_8_map.html' %}" width="80%" height="800px"></iframe>
+                            </div>
+                            <div class="index subout2" >
+                                <iframe name="myframe" src="{% static 'images/sol/sub2018_out_18_map.html' %}" width="80%" height="800px"></iframe>
+                            </div>
+                            <div class="index subout3" >
+                                <iframe name="myframe" src="{% static 'images/sol/sub2019_out_8_map.html' %}" width="80%" height="800px"></iframe>
+                            </div>
+                            <div class="index subout4" >
+                                <iframe name="myframe" src="{% static 'images/sol/sub2019_out_18_map.html' %}" width="80%" height="800px"></iframe>
+                            </div>
+                            <div class="index subout5" >
+                                <iframe name="myframe" src="{% static 'images/sol/sub2020_out_8_map.html' %}" width="80%" height="800px"></iframe>
+                            </div>
+                            <div class="index subout6" >
+                                <iframe name="myframe" src="{% static 'images/sol/sub2020_out_18_map.html' %}" width="80%" height="800px"></iframe>
+                            </div>
+                            <div class="index subout7" >
+                                <iframe name="myframe" src="{% static 'images/sol/sub2021_out_8_map.html' %}" width="80%" height="800px"></iframe>
+                            </div>
+                            <div class="index subout8" >
+                                <iframe name="myframe" src="{% static 'images/sol/sub2021_out_18_map.html' %}" width="80%" height="800px"></iframe>
+                            </div>
+
+                            <img src="{% static 'images/sol/subheatmap2.png' %}" alt="image">
+                      </div>
+                  </div>
+
+                  <div class="box tab3">
+
+                      <img src="{% static 'images/sol/subpopul.png' %}" alt="image">
+                      <img src="{% static 'images/sol/subpopul2.png' %}" alt="image">
+                  </div>
+
+                  <div class="box tab4">
+                      <input type="radio" id="btn_pop1" name="pop">
+                      <label for="btn_pop1">출근시간대 변화율</label>
+                      <input type="radio" id="btn_pop2" name="pop">
+                      <label for="btn_pop2">퇴근시간대 변화율</label>
+
+                      <div class="map pop1">
+                          <iframe name="myframe" src="{% static 'images/sol/sub1821_outin_8_map.html' %}" width="80%" height="800px"></iframe>
+                      </div>
+                      <div class="map pop2">
+                          <iframe name="myframe" src="{% static 'images/sol/sub1821_outin_18_map.html' %}" width="80%" height="800px"></iframe>
+
+                      </div>
+
+                      <img src="{% static 'images/sol/subpopul3.png' %}" alt="image">
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+
+
 
 
     
